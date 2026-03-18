@@ -1,1 +1,264 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Solterra Acquisitions - Hub</title><style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--bg:#0a0a0a;--surface:#111111;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--text:#e8e6e0;--muted:#6b6a66;--green:#6fcf62;--amber:#f5a623;--blue:#5b9cf5;--purple:#8b7ff5;--teal:#3ecf8e;--coral:#f57c5b}body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.6;min-height:100vh;padding:48px 24px 80px}.header{max-width:860px;margin:0 auto 56px;border-bottom:.5px solid var(--border);padding-bottom:28px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}.logo h1{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-family:'DM Mono',monospace}.logo h2{font-size:26px;font-weight:600;letter-spacing:-.03em;color:var(--text)}.status{font-size:11px;font-family:'DM Mono',monospace;color:var(--muted);text-align:right}.status span{display:block;color:var(--green);font-size:10px;margin-top:2px}.wrap{max-width:860px;margin:0 auto}.section-label{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-bottom:48px}.card{background:var(--surface);border:.5px solid var(--border2);border-radius:12px;padding:20px 22px;text-decoration:none;display:block;transition:all .15s ease;position:relative;overflow:hidden;color:var(--text)}.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity .15s}.card:hover{transform:translateY(-2px)}.card:hover::before{opacity:1}.card.green::before{background:var(--green)}.card.blue::before{background:var(--blue)}.card.amber::before{background:var(--amber)}.card.purple::before{background:var(--purple)}.card.teal::before{background:var(--teal)}.card.coral::before{background:var(--coral)}.card.green .card-title{color:var(--green)}.card.blue .card-title{color:var(--blue)}.card.amber .card-title{color:var(--amber)}.card.purple .card-title{color:var(--purple)}.card.teal .card-title{color:var(--teal)}.card.coral .card-title{color:var(--coral)}.card-icon{font-size:20px;margin-bottom:12px}.card-title{font-size:14px;font-weight:600;letter-spacing:-.01em;margin-bottom:5px}.card-sub{font-size:12px;color:var(--muted);line-height:1.5}.card-arrow{position:absolute;top:20px;right:20px;font-size:12px;color:var(--muted);opacity:0;transition:opacity .15s}.card:hover .card-arrow{opacity:1}.footer{max-width:860px;margin:48px auto 0;padding-top:20px;border-top:.5px solid var(--border);font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}</style></head><body><div class="header"><div class="logo"><h1>Solterra Acquisitions LLC</h1><h2>Operations Hub</h2></div><div class="status">Florida Vacant Land Wholesale<span>Live</span></div></div><div class="wrap"><div class="section-label">Deal Tools</div><div class="grid"><a href="mao-calculator.html" class="card green"><div class="card-icon">MAO</div><div class="card-title">MAO Calculator</div><div class="card-sub">All 40 markets - live spread slider - ARV to MAO to profit</div><div class="card-arrow">-&gt;</div></a><a href="deal-flow.html" class="card blue"><div class="card-icon">Flow</div><div class="card-title">Deal Flow</div><div class="card-sub">6-phase pipeline - market to close - automation map</div><div class="card-arrow">-&gt;</div></a></div><div class="section-label">Markets</div><div class="grid"><div class="card amber" style="cursor:default"><div class="card-icon">Mkt</div><div class="card-title">Active Markets</div><div class="card-sub">33 active - 7 TBC - Cape Coral, Palm Bay, North Port, PSL and more</div></div><div class="card teal" style="cursor:default"><div class="card-icon">Flags</div><div class="card-title">Universal Red Flags</div><div class="card-sub">Flood zone - scrubjay - tortoises - power - road type - assessments</div></div></div><div class="section-label">Operations</div><div class="grid"><div class="card purple" style="cursor:default"><div class="card-icon">Out</div><div class="card-title">Outreach Stack</div><div class="card-sub">Email campaigns live - SMS pending A2P - missed-call auto-reply active</div></div><div class="card coral" style="cursor:default"><div class="card-icon">More</div><div class="card-title">More Tools</div><div class="card-sub">List manager, campaign playbooks, and buyer tracker - coming soon</div></div></div></div><div class="footer"><span>Solterra Acquisitions LLC - Operations Hub</span><span>Updated March 2026</span></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solterra Acquisitions — Hub</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #1a1a1a;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #e8e6e0;
+    --muted: #6b6a66;
+    --green: #6fcf62;
+    --amber: #f5a623;
+    --blue: #5b9cf5;
+    --purple: #8b7ff5;
+    --teal: #3ecf8e;
+    --coral: #f57c5b;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+
+  .header {
+    max-width: 860px;
+    margin: 0 auto 56px;
+    border-bottom: 0.5px solid var(--border);
+    padding-bottom: 28px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .logo h1 {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .logo h2 {
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--text);
+  }
+
+  .status {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  .status span {
+    display: block;
+    color: var(--green);
+    font-size: 10px;
+    margin-top: 2px;
+  }
+
+  .wrap { max-width: 860px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 14px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px;
+    margin-bottom: 48px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 0.5px solid var(--border2);
+    border-radius: 12px;
+    padding: 20px 22px;
+    text-decoration: none;
+    display: block;
+    transition: all 0.15s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 12px 12px 0 0;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .card:hover { transform: translateY(-2px); }
+  .card:hover::before { opacity: 1; }
+
+  .card.green::before { background: var(--green); }
+  .card.blue::before { background: var(--blue); }
+  .card.amber::before { background: var(--amber); }
+  .card.purple::before { background: var(--purple); }
+  .card.teal::before { background: var(--teal); }
+  .card.coral::before { background: var(--coral); }
+
+  .card:hover.green { border-color: rgba(111,207,98,0.3); background: rgba(111,207,98,0.04); }
+  .card:hover.blue { border-color: rgba(91,156,245,0.3); background: rgba(91,156,245,0.04); }
+  .card:hover.amber { border-color: rgba(245,166,35,0.3); background: rgba(245,166,35,0.04); }
+  .card:hover.purple { border-color: rgba(139,127,245,0.3); background: rgba(139,127,245,0.04); }
+  .card:hover.teal { border-color: rgba(62,207,142,0.3); background: rgba(62,207,142,0.04); }
+  .card:hover.coral { border-color: rgba(245,124,91,0.3); background: rgba(245,124,91,0.04); }
+
+  .card-icon {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 5px;
+    color: var(--text);
+  }
+
+  .card.green .card-title { color: var(--green); }
+  .card.blue .card-title { color: var(--blue); }
+  .card.amber .card-title { color: var(--amber); }
+  .card.purple .card-title { color: var(--purple); }
+  .card.teal .card-title { color: var(--teal); }
+  .card.coral .card-title { color: var(--coral); }
+
+  .card-sub {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .card-arrow {
+    position: absolute;
+    top: 20px; right: 20px;
+    font-size: 12px;
+    color: var(--muted);
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .card:hover .card-arrow { opacity: 1; }
+
+  .divider {
+    height: 0.5px;
+    background: var(--border);
+    margin: 40px 0;
+  }
+
+  .footer {
+    max-width: 860px;
+    margin: 48px auto 0;
+    padding-top: 20px;
+    border-top: 0.5px solid var(--border);
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <h1>Solterra Acquisitions LLC</h1>
+    <h2>Operations Hub</h2>
+  </div>
+  <div class="status">
+    Florida Vacant Land Wholesale
+    <span>● Live</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="section-label">Deal Tools</div>
+  <div class="grid">
+    <a href="mao-calculator.html" class="card green">
+      <div class="card-icon">📊</div>
+      <div class="card-title">MAO Calculator</div>
+      <div class="card-sub">All 40 markets · live spread slider · ARV → MAO → profit</div>
+      <div class="card-arrow">↗</div>
+    </a>
+    <a href="deal-flow.html" class="card blue">
+      <div class="card-icon">🔄</div>
+      <div class="card-title">Deal Flow</div>
+      <div class="card-sub">6-phase pipeline · market to close · automation map</div>
+      <div class="card-arrow">↗</div>
+    </a>
+  </div>
+
+  <div class="section-label">Markets</div>
+  <div class="grid">
+    <div class="card amber" style="cursor:default">
+      <div class="card-icon">📍</div>
+      <div class="card-title">Active Markets</div>
+      <div class="card-sub">33 active · 7 TBC · Cape Coral, Palm Bay, North Port, PSL and more</div>
+    </div>
+    <div class="card teal" style="cursor:default">
+      <div class="card-icon">⚠️</div>
+      <div class="card-title">Universal Red Flags</div>
+      <div class="card-sub">Flood zone · scrubjay · tortoises · power · road type · assessments</div>
+    </div>
+  </div>
+
+  <div class="section-label">Operations</div>
+  <div class="grid">
+    <div class="card purple" style="cursor:default">
+      <div class="card-icon">📬</div>
+      <div class="card-title">Outreach Stack</div>
+      <div class="card-sub">Email campaigns live · SMS pending A2P · missed-call auto-reply active</div>
+    </div>
+    <div class="card coral" style="cursor:default">
+      <div class="card-icon">🏗️</div>
+      <div class="card-title">More Tools</div>
+      <div class="card-sub">List manager, campaign playbooks, and buyer tracker — coming soon</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <span>Solterra Acquisitions LLC — Operations Hub</span>
+  <span>Updated March 2026</span>
+</div>
+
+</body>
+</html>
