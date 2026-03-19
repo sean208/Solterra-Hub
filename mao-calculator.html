@@ -1,525 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solterra Acquisitions — MAO Calculator</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found</title>
+    <style>
+      :root {
+        --colorRgbFacetsTeal600: 2 128 125;
+        --colorTealAction: var(--colorRgbFacetsTeal600);
+        --colorRgbFacetsNeutralLight200: 233 235 237;
+        --colorHr: var(--colorRgbFacetsNeutralLight200);
+        --colorRgbFacetsNeutralLight700: 53 58 62;
+        --colorGrayDarkest: var(--colorRgbFacetsNeutralLight700);
+        --colorGrayLighter: var(--colorRgbFacetsNeutralLight200);
+        --colorText: var(--colorGrayDarkest);
+        --effectShadowLightShallow: 0 1px 10px 0 rgb(53 58 62 / 6%),
+          0 2px 4px 0 rgb(53 58 62 / 8%);
+        --colorRgbFacetsNeutralDark900: 6 11 16;
+      }
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol";
+        background: white;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+        color: rgb(var(--colorText));
+      }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: rgb(var(--colorRgbFacetsNeutralDark900));
+        }
+      }
 
-  :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --surface2: #1a1a1a;
-    --border: rgba(255,255,255,0.08);
-    --border2: rgba(255,255,255,0.14);
-    --text: #e8e6e0;
-    --muted: #6b6a66;
-    --dim: #3a3a38;
-    --green: #6fcf62;
-    --amber: #f5a623;
-    --red: #f04747;
-    --teal: #3ecf8e;
-  }
+      h1 {
+        margin: 0;
+        font-size: 1.375rem;
+        line-height: 1;
+      }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    min-height: 100vh;
-    padding: 40px 24px 80px;
-  }
+      h1 + p {
+        margin-top: 8px;
+      }
 
-  .header {
-    max-width: 860px;
-    margin: 0 auto 40px;
-    border-bottom: 0.5px solid var(--border);
-    padding-bottom: 24px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
+      .main {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
 
-  .logo-area h1 {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 6px;
-    font-family: 'DM Mono', monospace;
-  }
+      .card {
+        position: relative;
+        width: 75%;
+        max-width: 364px;
+        padding: 24px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: var(--effectShadowLightShallow);
+        border: 1px solid rgb(var(--colorGrayLighter));
+      }
 
-  .logo-area h2 {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: -0.02em;
-  }
+      a {
+        margin: 0;
+        font-weight: 600;
+        color: rgb(var(--colorTealAction));
+        text-decoration-skip-ink: all;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+        text-decoration-color: rgb(var(--colorTealAction) / 0.5);
+        transition: text-decoration-color 0.15s ease-in-out;
+      }
 
-  .wrap { max-width: 860px; margin: 0 auto; }
+      a:hover,
+      a:focus-visible {
+        text-decoration-color: rgb(var(--colorTealAction));
+      }
 
-  .controls {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 28px;
-    padding: 16px 20px;
-    background: var(--surface);
-    border: 0.5px solid var(--border2);
-    border-radius: 12px;
-    flex-wrap: wrap;
-  }
+      p:last-of-type {
+        margin-bottom: 0;
+      }
 
-  .ctrl-label {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    white-space: nowrap;
-    font-family: 'DM Mono', monospace;
-  }
+      hr {
+        border: 0;
+        height: 1px;
+        background: rgb(var(--colorHr));
+        margin-top: 16px;
+        margin-bottom: 16px;
+      }
 
-  .ctrl-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex: 1;
-    min-width: 200px;
-  }
-
-  input[type=range] {
-    flex: 1;
-    -webkit-appearance: none;
-    height: 4px;
-    background: var(--dim);
-    border-radius: 2px;
-    outline: none;
-  }
-
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--green);
-    cursor: pointer;
-  }
-
-  .pct-display {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text);
-    min-width: 52px;
-    font-family: 'DM Mono', monospace;
-  }
-
-  .tier-dots {
-    display: flex;
-    gap: 14px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .leg {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-  }
-
-  .leg-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-  }
-
-  .legend-row {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-  }
-
-  .legend-item {
-    font-size: 11px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-  }
-
-  .market-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .market-card {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  .market-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.15s;
-  }
-
-  .market-header:hover { background: var(--surface2); }
-
-  .market-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    flex: 1;
-    letter-spacing: -0.01em;
-  }
-
-  .market-county {
-    font-size: 11px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-  }
-
-  .spread-badge {
-    font-size: 10px;
-    padding: 3px 9px;
-    border-radius: 20px;
-    font-weight: 500;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.04em;
-  }
-
-  .badge-30 { background: rgba(111,207,98,0.12); color: var(--green); }
-  .badge-25 { background: rgba(245,166,35,0.12); color: var(--amber); }
-  .badge-20 { background: rgba(240,71,71,0.12); color: var(--red); }
-
-  .chevron {
-    font-size: 10px;
-    color: var(--muted);
-    transition: transform 0.2s;
-  }
-
-  .chevron.open { transform: rotate(180deg); }
-
-  .market-body {
-    display: none;
-    padding: 0 16px 14px;
-  }
-
-  .market-body.open { display: block; }
-
-  .col-headers {
-    display: grid;
-    grid-template-columns: 1fr 90px 90px 90px;
-    gap: 6px;
-    margin-bottom: 4px;
-    padding-bottom: 4px;
-    border-bottom: 0.5px solid var(--border);
-  }
-
-  .col-header {
-    font-size: 10px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--muted);
-    text-align: right;
-    font-family: 'DM Mono', monospace;
-  }
-
-  .col-header:first-child { text-align: left; }
-
-  .scenario-row {
-    display: grid;
-    grid-template-columns: 1fr 90px 90px 90px;
-    gap: 6px;
-    padding: 7px 0;
-    border-bottom: 0.5px solid var(--border);
-    align-items: center;
-  }
-
-  .scenario-row:last-of-type { border-bottom: none; }
-
-  .scenario-label {
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .scenario-val {
-    font-size: 12px;
-    font-weight: 500;
-    text-align: right;
-    font-family: 'DM Mono', monospace;
-    font-variant-numeric: tabular-nums;
-    color: var(--text);
-  }
-
-  .val-mao-30 { color: var(--green); }
-  .val-mao-25 { color: var(--amber); }
-  .val-mao-20 { color: var(--red); }
-  .val-profit { color: var(--teal); }
-
-  .watch-box {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 0.5px solid var(--border);
-    line-height: 1.6;
-  }
-
-  .watch-box strong {
-    color: rgba(255,255,255,0.35);
-    font-weight: 500;
-  }
-
-  .footer {
-    max-width: 860px;
-    margin: 48px auto 0;
-    padding-top: 20px;
-    border-top: 0.5px solid var(--border);
-    font-size: 11px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    display: flex;
-    justify-content: space-between;
-  }
-</style>
-</head>
-<body>
-
-<div class="header">
-  <div class="logo-area">
-    <h1>Solterra Acquisitions LLC</h1>
-    <h2>MAO Calculator — All Markets</h2>
-  </div>
-</div>
-
-<div class="wrap">
-  <div class="controls">
-    <span class="ctrl-label">Target spread</span>
-    <div class="ctrl-row">
-      <input type="range" id="spread" min="15" max="35" value="30" step="1" oninput="update()">
-      <span class="pct-display" id="pct-label">30%</span>
-    </div>
-    <div class="tier-dots">
-      <div class="leg"><div class="leg-dot" style="background:#6fcf62"></div> 30% goal</div>
-      <div class="leg"><div class="leg-dot" style="background:#f5a623"></div> 25% ok</div>
-      <div class="leg"><div class="leg-dot" style="background:#f04747"></div> 20% floor</div>
-    </div>
-  </div>
-
-  <div class="legend-row">
-    <span class="legend-item">ARV = what builder/buyer pays</span>
-    <span class="legend-item">MAO = your max offer at chosen spread</span>
-    <span class="legend-item">Profit = your assignment fee</span>
-  </div>
-
-  <div class="market-grid" id="grid"></div>
-</div>
-
-<div class="footer">
-  <span>Solterra Acquisitions LLC — MAO Calculator v1</span>
-  <span>Built with Claude · March 2026</span>
-</div>
-
-<script>
-const markets = [
-  {
-    name:"Cape Coral", county:"Lee County",
-    scenarios:[
-      {label:"Well/Septic — no power", arv:25000, warn:false},
-      {label:"Flood zone + power + well/septic", arv:25000, warn:true},
-      {label:"City water lots", arv:45000, warn:false},
-    ],
-    watch:"Zoning, future zoning, scrubjay permit boundary, seawall lots, environmental hazards, assessment balance. Check w_srv_avail and s_srv_avail fields."
-  },
-  {
-    name:"Rainbow Park", county:"Marion County",
-    scenarios:[
-      {label:"1/4 acre — close to interstate", arv:13000, warn:true},
-      {label:"1/2 acre", arv:21000, warn:false},
-      {label:"0.75 acre — clean", arv:25000, warn:false},
-    ],
-    watch:"Power access and road access are the two biggest value drivers. Verify both before making any offer."
-  },
-  {
-    name:"Marion Oaks", county:"Marion County",
-    scenarios:[
-      {label:"Well/Septic — no power", arv:25000, warn:false},
-      {label:"Flood zone + power + well/septic", arv:25000, warn:true},
-      {label:"City water lots", arv:45000, warn:false},
-    ],
-    watch:"Email UtilAvailReq@marionfl.org with Parcel ID to get utility letter. Water connection may require Standard Connection, Benefiting Parcel, or Extension Required."
-  },
-  {
-    name:"Okeechobee", county:"Okeechobee County",
-    scenarios:[
-      {label:"Clean — no flood zone, no wetlands", arv:22000, warn:false},
-      {label:"Wetlands or flood zone present", arv:15000, warn:true},
-    ],
-    watch:"Average size 1.25 acres. Flood zone and wetlands kill value fast. Always check before offering. Verify clean title."
-  },
-  {
-    name:"North Port", county:"Sarasota County",
-    scenarios:[
-      {label:"Undeveloped — scrubjay, no utilities", arv:7000, warn:true},
-      {label:"Well + scrubjay + developed area", arv:18000, warn:true},
-      {label:"City water + scrubjay + developed", arv:24000, warn:false},
-      {label:"City water — no scrubjay — developed", arv:27000, warn:false},
-    ],
-    watch:"Scrubjay is the biggest deal-killer in North Port. Check scrubjay permit boundary before ANY offer. Flood zone and city water vs well dramatically affect price."
-  },
-  {
-    name:"Palm Bay", county:"Brevard County",
-    scenarios:[
-      {label:"Well & Septic — no flood — no wetlands", arv:36500, warn:false},
-      {label:"City water/sewer — no flood — no wetlands", arv:51000, warn:false},
-      {label:"City water — premium (0.23 ac+)", arv:75000, warn:false},
-    ],
-    watch:"No color = well/septic, Blue = city water + septic, Green = city water + sewer. NO FLOOD and NO WETLANDS required for all price points above."
-  },
-  {
-    name:"South Gulf Cove", county:"Charlotte County",
-    scenarios:[
-      {label:"Flood zone — dry lot", arv:17500, warn:true},
-      {label:"Non flood — dry lot", arv:23500, warn:false},
-      {label:"No seawall — waterfront", arv:80000, warn:false},
-      {label:"Seawall lots", arv:120000, warn:false},
-    ],
-    watch:"City water on all lots. Waterfront and seawall lots are premium — underwrite on comps. Verify flood zone and dry vs wet lot status first."
-  },
-  {
-    name:"Lehigh Acres", county:"Lee County",
-    scenarios:[
-      {label:"Harris area — clean", arv:20000, warn:false},
-      {label:"Sunshine & Alabama area", arv:27000, warn:false},
-    ],
-    watch:"Watch for tortoises, flood zone, and wetlands across all Lehigh zones. Weird Zone area has additional restrictions — always verify before offering."
-  },
-  {
-    name:"Englewood", county:"Charlotte/Sarasota",
-    scenarios:[
-      {label:"Clean — city water — no scrubjay", arv:20000, warn:false},
-      {label:"Clean — well access — no scrubjay", arv:16500, warn:false},
-    ],
-    watch:"Scrubjay permit boundary is critical — check before any offer. Utilities (city water vs well) and flood zone are the main value splits."
-  },
-  {
-    name:"Citrus Springs", county:"Citrus County",
-    scenarios:[
-      {label:"City water — clean", arv:35000, warn:false},
-      {label:"Well access — clean", arv:28000, warn:false},
-    ],
-    watch:"Check utilities carefully — city water vs well access drives price. Tortoise permits and flood zone are secondary concerns."
-  },
-  {
-    name:"Beverly Hills", county:"Citrus County",
-    scenarios:[
-      {label:"1–1.2 acres — no flood — no wetlands", arv:62500, warn:false},
-      {label:"1.5+ acres — underwrite on comps", arv:75000, warn:false},
-    ],
-    watch:"Slopes present — no flood zone, no wetlands required. 1–1.2 acre lots max offer 62.5k. Larger lots require individual comp analysis."
-  },
-  {
-    name:"Rotonda West", county:"Charlotte County",
-    scenarios:[
-      {label:"Standard lot", arv:17000, warn:false},
-    ],
-    watch:"TBD — verify market conditions. 17k max offer price per group intel."
-  },
-];
-
-function mao(arv, pct){ return Math.round(arv * (1 - pct/100)); }
-function profit(arv, pct){ return Math.round(arv * (pct/100)); }
-function fmt(n){ return '$' + n.toLocaleString(); }
-
-function spreadClass(pct){
-  if(pct >= 28) return 'val-mao-30';
-  if(pct >= 23) return 'val-mao-25';
-  return 'val-mao-20';
-}
-
-function badgeClass(pct){
-  if(pct >= 28) return 'badge-30';
-  if(pct >= 23) return 'badge-25';
-  return 'badge-20';
-}
-
-function badgeLabel(pct){
-  if(pct >= 28) return '30% target';
-  if(pct >= 23) return '25% ok';
-  return '20% floor';
-}
-
-function buildGrid(){
-  const grid = document.getElementById('grid');
-  grid.innerHTML = '';
-  const pct = parseInt(document.getElementById('spread').value);
-
-  markets.forEach((m, i) => {
-    const card = document.createElement('div');
-    card.className = 'market-card';
-
-    const rows = m.scenarios.map(s => {
-      const maoVal = mao(s.arv, pct);
-      const profitVal = profit(s.arv, pct);
-      const warn = s.warn ? ' ⚠' : '';
-      return `<div class="scenario-row">
-        <span class="scenario-label">${s.label}${warn}</span>
-        <span class="scenario-val">${fmt(s.arv)}</span>
-        <span class="scenario-val ${spreadClass(pct)}">${fmt(maoVal)}</span>
-        <span class="scenario-val val-profit">${fmt(profitVal)}</span>
-      </div>`;
-    }).join('');
-
-    card.innerHTML = `
-      <div class="market-header" onclick="toggle(${i})">
-        <span class="market-name">${m.name}</span>
-        <span class="market-county">${m.county}</span>
-        <span class="spread-badge ${badgeClass(pct)}">${badgeLabel(pct)}</span>
-        <span class="chevron" id="chev-${i}">▼</span>
+      .your-site {
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="card">
+        <h1>Page not found</h1>
+        <p>
+          Looks like you’ve followed a broken link or entered a URL that doesn’t
+          exist on this site.
+        </p>
+        <hr />
+        <p class="your-site">
+          If this is your site, and you weren’t expecting a 404 for this path,
+          please visit Netlify’s
+          <a
+            href="https://answers.netlify.com/t/support-guide-i-ve-deployed-my-site-but-i-still-see-page-not-found/125?utm_source=404page&utm_campaign=community_tracking"
+            >“page not found” support guide</a
+          >
+          for troubleshooting tips.
+        </p>
       </div>
-      <div class="market-body" id="body-${i}">
-        <div class="col-headers">
-          <span class="col-header">scenario</span>
-          <span class="col-header">ARV</span>
-          <span class="col-header">MAO</span>
-          <span class="col-header">profit</span>
-        </div>
-        ${rows}
-        <div class="watch-box"><strong>Watch out for:</strong> ${m.watch}</div>
-      </div>`;
-
-    grid.appendChild(card);
-  });
-}
-
-function toggle(i){
-  document.getElementById('body-'+i).classList.toggle('open');
-  document.getElementById('chev-'+i).classList.toggle('open');
-}
-
-function update(){
-  const pct = parseInt(document.getElementById('spread').value);
-  document.getElementById('pct-label').textContent = pct + '%';
-  buildGrid();
-}
-
-buildGrid();
-</script>
-</body>
+    </div>
+  </body>
 </html>
