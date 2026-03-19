@@ -1,475 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solterra Acquisitions — Full Deal Flow</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found</title>
+    <style>
+      :root {
+        --colorRgbFacetsTeal600: 2 128 125;
+        --colorTealAction: var(--colorRgbFacetsTeal600);
+        --colorRgbFacetsNeutralLight200: 233 235 237;
+        --colorHr: var(--colorRgbFacetsNeutralLight200);
+        --colorRgbFacetsNeutralLight700: 53 58 62;
+        --colorGrayDarkest: var(--colorRgbFacetsNeutralLight700);
+        --colorGrayLighter: var(--colorRgbFacetsNeutralLight200);
+        --colorText: var(--colorGrayDarkest);
+        --effectShadowLightShallow: 0 1px 10px 0 rgb(53 58 62 / 6%),
+          0 2px 4px 0 rgb(53 58 62 / 8%);
+        --colorRgbFacetsNeutralDark900: 6 11 16;
+      }
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol";
+        background: white;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+        color: rgb(var(--colorText));
+      }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: rgb(var(--colorRgbFacetsNeutralDark900));
+        }
+      }
 
-  :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --surface2: #1a1a1a;
-    --border: rgba(255,255,255,0.08);
-    --border2: rgba(255,255,255,0.14);
-    --text: #e8e6e0;
-    --muted: #6b6a66;
-    --dim: #3a3a38;
+      h1 {
+        margin: 0;
+        font-size: 1.375rem;
+        line-height: 1;
+      }
 
-    --purple: #8b7ff5;
-    --purple-bg: rgba(139,127,245,0.08);
-    --purple-border: rgba(139,127,245,0.25);
+      h1 + p {
+        margin-top: 8px;
+      }
 
-    --blue: #5b9cf5;
-    --blue-bg: rgba(91,156,245,0.08);
-    --blue-border: rgba(91,156,245,0.25);
+      .main {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
 
-    --teal: #3ecf8e;
-    --teal-bg: rgba(62,207,142,0.08);
-    --teal-border: rgba(62,207,142,0.25);
+      .card {
+        position: relative;
+        width: 75%;
+        max-width: 364px;
+        padding: 24px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: var(--effectShadowLightShallow);
+        border: 1px solid rgb(var(--colorGrayLighter));
+      }
 
-    --amber: #f5a623;
-    --amber-bg: rgba(245,166,35,0.08);
-    --amber-border: rgba(245,166,35,0.25);
+      a {
+        margin: 0;
+        font-weight: 600;
+        color: rgb(var(--colorTealAction));
+        text-decoration-skip-ink: all;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+        text-decoration-color: rgb(var(--colorTealAction) / 0.5);
+        transition: text-decoration-color 0.15s ease-in-out;
+      }
 
-    --coral: #f57c5b;
-    --coral-bg: rgba(245,124,91,0.08);
-    --coral-border: rgba(245,124,91,0.25);
+      a:hover,
+      a:focus-visible {
+        text-decoration-color: rgb(var(--colorTealAction));
+      }
 
-    --green: #6fcf62;
-    --green-bg: rgba(111,207,98,0.08);
-    --green-border: rgba(111,207,98,0.25);
+      p:last-of-type {
+        margin-bottom: 0;
+      }
 
-    --gray: #888780;
-  }
+      hr {
+        border: 0;
+        height: 1px;
+        background: rgb(var(--colorHr));
+        margin-top: 16px;
+        margin-bottom: 16px;
+      }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    min-height: 100vh;
-    padding: 40px 24px 80px;
-  }
-
-  .header {
-    max-width: 860px;
-    margin: 0 auto 48px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 16px;
-    border-bottom: 0.5px solid var(--border);
-    padding-bottom: 24px;
-  }
-
-  .logo-area h1 {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 6px;
-    font-family: 'DM Mono', monospace;
-  }
-
-  .logo-area h2 {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: -0.02em;
-  }
-
-  .legend {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .leg {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-  }
-
-  .leg-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .flow {
-    max-width: 860px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .phase {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .phase-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    border-radius: 10px;
-    border: 0.5px solid;
-  }
-
-  .phase-num {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 600;
-    font-family: 'DM Mono', monospace;
-    flex-shrink: 0;
-  }
-
-  .phase-title {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    flex: 1;
-  }
-
-  .phase-badge {
-    font-size: 10px;
-    font-weight: 500;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.04em;
-    white-space: nowrap;
-  }
-
-  .nodes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 8px;
-    padding-left: 36px;
-  }
-
-  .node {
-    border-radius: 8px;
-    border: 0.5px solid;
-    padding: 12px 14px;
-    transition: all 0.15s ease;
-    cursor: default;
-  }
-
-  .node:hover {
-    transform: translateY(-1px);
-  }
-
-  .node-title {
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    letter-spacing: -0.01em;
-  }
-
-  .node-sub {
-    font-size: 11px;
-    line-height: 1.5;
-    opacity: 0.65;
-  }
-
-  .node.pending {
-    opacity: 0.45;
-    filter: grayscale(0.6);
-  }
-
-  .connector {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 8px 0 8px 36px;
-  }
-
-  .connector-line {
-    width: 0.5px;
-    height: 28px;
-    background: var(--border2);
-    margin-left: 11px;
-  }
-
-  .connector-arrow {
-    color: var(--dim);
-    font-size: 12px;
-    margin-left: 5px;
-  }
-
-  /* Phase colors */
-  .ph1 .phase-header { background: var(--purple-bg); border-color: var(--purple-border); }
-  .ph1 .phase-num { background: rgba(139,127,245,0.2); color: var(--purple); }
-  .ph1 .phase-title { color: var(--purple); }
-  .ph1 .phase-badge { background: rgba(139,127,245,0.15); color: var(--purple); }
-  .ph1 .node { background: var(--surface); border-color: var(--purple-border); }
-  .ph1 .node:hover { background: var(--purple-bg); border-color: var(--purple); }
-  .ph1 .node-title { color: var(--purple); }
-
-  .ph2 .phase-header { background: var(--blue-bg); border-color: var(--blue-border); }
-  .ph2 .phase-num { background: rgba(91,156,245,0.2); color: var(--blue); }
-  .ph2 .phase-title { color: var(--blue); }
-  .ph2 .phase-badge { background: rgba(91,156,245,0.15); color: var(--blue); }
-  .ph2 .node { background: var(--surface); border-color: var(--blue-border); }
-  .ph2 .node:hover { background: var(--blue-bg); border-color: var(--blue); }
-  .ph2 .node-title { color: var(--blue); }
-
-  .ph3 .phase-header { background: var(--teal-bg); border-color: var(--teal-border); }
-  .ph3 .phase-num { background: rgba(62,207,142,0.2); color: var(--teal); }
-  .ph3 .phase-title { color: var(--teal); }
-  .ph3 .phase-badge { background: rgba(62,207,142,0.15); color: var(--teal); }
-  .ph3 .node { background: var(--surface); border-color: var(--teal-border); }
-  .ph3 .node:hover { background: var(--teal-bg); border-color: var(--teal); }
-  .ph3 .node-title { color: var(--teal); }
-
-  .ph4 .phase-header { background: var(--amber-bg); border-color: var(--amber-border); }
-  .ph4 .phase-num { background: rgba(245,166,35,0.2); color: var(--amber); }
-  .ph4 .phase-title { color: var(--amber); }
-  .ph4 .phase-badge { background: rgba(245,166,35,0.15); color: var(--amber); }
-  .ph4 .node { background: var(--surface); border-color: var(--amber-border); }
-  .ph4 .node:hover { background: var(--amber-bg); border-color: var(--amber); }
-  .ph4 .node-title { color: var(--amber); }
-
-  .ph5 .phase-header { background: var(--coral-bg); border-color: var(--coral-border); }
-  .ph5 .phase-num { background: rgba(245,124,91,0.2); color: var(--coral); }
-  .ph5 .phase-title { color: var(--coral); }
-  .ph5 .phase-badge { background: rgba(245,124,91,0.15); color: var(--coral); }
-  .ph5 .node { background: var(--surface); border-color: var(--coral-border); }
-  .ph5 .node:hover { background: var(--coral-bg); border-color: var(--coral); }
-  .ph5 .node-title { color: var(--coral); }
-
-  .ph6 .phase-header { background: var(--green-bg); border-color: var(--green-border); }
-  .ph6 .phase-num { background: rgba(111,207,98,0.2); color: var(--green); }
-  .ph6 .phase-title { color: var(--green); }
-  .ph6 .phase-badge { background: rgba(111,207,98,0.15); color: var(--green); }
-  .ph6 .node { background: var(--surface); border-color: var(--green-border); }
-  .ph6 .node:hover { background: var(--green-bg); border-color: var(--green); }
-  .ph6 .node-title { color: var(--green); }
-
-  .footer {
-    max-width: 860px;
-    margin: 48px auto 0;
-    padding-top: 20px;
-    border-top: 0.5px solid var(--border);
-    font-size: 11px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    display: flex;
-    justify-content: space-between;
-  }
-</style>
-</head>
-<body>
-
-<div class="header">
-  <div class="logo-area">
-    <h1>Solterra Acquisitions LLC</h1>
-    <h2>Full Deal Flow — Market to Close</h2>
-  </div>
-  <div class="legend">
-    <div class="leg"><div class="leg-dot" style="background:#6fcf62"></div> autopilot</div>
-    <div class="leg"><div class="leg-dot" style="background:#f57c5b"></div> sean only</div>
-    <div class="leg"><div class="leg-dot" style="background:#5b9cf5"></div> ghl notify</div>
-    <div class="leg"><div class="leg-dot" style="background:#555"></div> pending a2p</div>
-  </div>
-</div>
-
-<div class="flow">
-
-  <!-- PHASE 1 -->
-  <div class="phase ph1">
-    <div class="phase-header">
-      <div class="phase-num">1</div>
-      <div class="phase-title">Market research & list building</div>
-      <div class="phase-badge">Sean — manual</div>
-    </div>
-    <div class="nodes">
-      <div class="node">
-        <div class="node-title">County selection</div>
-        <div class="node-sub">Cape Coral, Okeechobee, Marion Oaks, Rainbow Park, Rainbow Lakes, PSL</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Data pull</div>
-        <div class="node-sub">County records, PropStream, DataTree — absentee owners, delinquent tax</div>
-      </div>
-      <div class="node">
-        <div class="node-title">List filtering</div>
-        <div class="node-sub">Absentee owners, long holds, delinquent taxes — skip-traced</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Import to GHL</div>
-        <div class="node-sub">CSV upload → tagged by market and source</div>
+      .your-site {
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="card">
+        <h1>Page not found</h1>
+        <p>
+          Looks like you’ve followed a broken link or entered a URL that doesn’t
+          exist on this site.
+        </p>
+        <hr />
+        <p class="your-site">
+          If this is your site, and you weren’t expecting a 404 for this path,
+          please visit Netlify’s
+          <a
+            href="https://answers.netlify.com/t/support-guide-i-ve-deployed-my-site-but-i-still-see-page-not-found/125?utm_source=404page&utm_campaign=community_tracking"
+            >“page not found” support guide</a
+          >
+          for troubleshooting tips.
+        </p>
       </div>
     </div>
-  </div>
-
-  <div class="connector"><div class="connector-line"></div></div>
-
-  <!-- PHASE 2 -->
-  <div class="phase ph2">
-    <div class="phase-header">
-      <div class="phase-num">2</div>
-      <div class="phase-title">Lead generation — outreach campaigns</div>
-      <div class="phase-badge">Autopilot — fires daily</div>
-    </div>
-    <div class="nodes">
-      <div class="node">
-        <div class="node-title">Email campaigns</div>
-        <div class="node-sub">6 markets, batched sends, form link embedded, GHL auto-unsubscribe</div>
-      </div>
-      <div class="node pending">
-        <div class="node-title">SMS campaigns</div>
-        <div class="node-sub">Pending A2P approval — sequences built and ready to launch</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Missed call → SMS</div>
-        <div class="node-sub">"Hey, this is Sean — sorry I missed you! Still interested in selling? Text me back."</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="connector"><div class="connector-line"></div></div>
-
-  <!-- PHASE 3 -->
-  <div class="phase ph3">
-    <div class="phase-header">
-      <div class="phase-num">3</div>
-      <div class="phase-title">Lead intake & automation</div>
-      <div class="phase-badge">GHL handles → notifies Sean</div>
-    </div>
-    <div class="nodes">
-      <div class="node">
-        <div class="node-title">Form fill</div>
-        <div class="node-sub">Auto-creates contact, enters pipeline, Sean notified instantly</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Reply received</div>
-        <div class="node-sub">All sequences stop, GHL task created, Sean notified</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Inbound call</div>
-        <div class="node-sub">Routes to Sean's phone — missed = auto SMS reply fires</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Lead tagging</div>
-        <div class="node-sub">Tagged by market, source, and date entered</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="connector"><div class="connector-line"></div></div>
-
-  <!-- PHASE 4 -->
-  <div class="phase ph4">
-    <div class="phase-header">
-      <div class="phase-num">4</div>
-      <div class="phase-title">Pipeline management</div>
-      <div class="phase-badge">GHL tracks — Sean moves stages</div>
-    </div>
-    <div class="nodes">
-      <div class="node">
-        <div class="node-title">New lead</div>
-        <div class="node-sub">Uncontacted — email + SMS sequences running</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Contacted</div>
-        <div class="node-sub">Two-way conversation open with seller</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Underwriting</div>
-        <div class="node-sub">Comps pulled, MAO calculated, form data reviewed</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Offer sent</div>
-        <div class="node-sub">Follow-up sequences triggered on both channels</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Offer accepted</div>
-        <div class="node-sub">Move to negotiation and contract stage</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="connector"><div class="connector-line"></div></div>
-
-  <!-- PHASE 5 -->
-  <div class="phase ph5">
-    <div class="phase-header">
-      <div class="phase-num">5</div>
-      <div class="phase-title">Negotiation</div>
-      <div class="phase-badge">Sean only — always manual</div>
-    </div>
-    <div class="nodes">
-      <div class="node">
-        <div class="node-title">Price negotiation</div>
-        <div class="node-sub">Sean handles every conversation personally — no automation</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Terms & contingencies</div>
-        <div class="node-sub">Inspection period, assignment rights, earnest money</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Seller follow-through</div>
-        <div class="node-sub">Keep seller engaged from acceptance to signed contract</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="connector"><div class="connector-line"></div></div>
-
-  <!-- PHASE 6 -->
-  <div class="phase ph6">
-    <div class="phase-header">
-      <div class="phase-num">6</div>
-      <div class="phase-title">Closing</div>
-      <div class="phase-badge">Sean + title company</div>
-    </div>
-    <div class="nodes">
-      <div class="node">
-        <div class="node-title">Find end buyer</div>
-        <div class="node-sub">Buyer list, Facebook groups, investor network — cash buyers only</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Assignment or double close</div>
-        <div class="node-sub">Assign contract or double close through title company</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Title & escrow</div>
-        <div class="node-sub">Title company handles docs, disbursement, and recording</div>
-      </div>
-      <div class="node">
-        <div class="node-title">Funded & paid</div>
-        <div class="node-sub">Assignment fee or spread wired directly to Sean</div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<div class="footer">
-  <span>Solterra Acquisitions LLC — Deal Flow v1</span>
-  <span>Built with Claude · March 2026</span>
-</div>
-
-</body>
+  </body>
 </html>
